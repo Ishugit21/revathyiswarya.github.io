@@ -17,13 +17,7 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text);display:flex;min-height:100vh;font-size:15px;line-height:1.6}
 .sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;padding:2rem 1.5rem;gap:1.4rem;}
 .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-thumb{background:#2a332d}
-.avatar{
-  width:72px;height:72px;border-radius:50%;
-  object-fit:cover;object-position:center top;
-  flex-shrink:0;
-  box-shadow:0 0 0 3px rgba(29,158,117,0.2);
-  display:block;
-}
+.avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;object-position:center 15%;display:block;margin:0 auto;box-shadow:0 0 0 3px rgba(29,158,117,0.3);flex-shrink:0;}
 .sidebar-name{font-family:'DM Serif Display',serif;font-size:16px;color:#edf0ee;line-height:1.3;margin-top:.4rem;}
 .sidebar-role{font-size:11px;color:var(--sidebar-muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.6;margin-top:3px;}
 .s-divider{height:1px;background:var(--sidebar-border);margin:.1rem 0}
@@ -92,9 +86,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
 <body>
 
 <aside class="sidebar">
-  <div>
-    <img src="Photo.jpg" alt="Revathy Iswarya" class="avatar" style="object-fit:cover;object-position:center 15%;">
-    <div class="sidebar-name">Revathy Iswarya Sekaran</div>
+  <div style="text-align:center;">
+    <img src="photo.jpg" alt="Revathy Iswarya Sekaran" class="avatar">
+    <div class="sidebar-name" style="margin-top:.6rem;">Revathy Iswarya Sekaran</div>
     <div class="sidebar-role">Data Scientist · ML Engineer<br>Data Analyst</div>
   </div>
   <div class="s-divider"></div>
@@ -105,6 +99,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
     <button class="nav-btn" data-target="resume">Resume</button>
     <button class="nav-btn" data-target="certifications">Courses &amp; Certs</button>
     <button class="nav-btn" data-target="education">Education</button>
+    <button class="nav-btn" data-target="awards">Awards</button>
+    <button class="nav-btn" data-target="contact">Get in Touch</button>
   </nav>
   <div class="s-divider"></div>
   <div class="sidebar-meta">
@@ -135,19 +131,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
     <div class="section-label">About Me</div>
     <h1 class="section-title">Hello, I'm Revathy</h1>
     <div class="intro-card">
-      <p class="intro-lead">Data Scientist with 12+ years in QA &amp; analytics, now building ML systems that make sense of the world.</p>
-      <p class="intro-body">I recently completed my <strong>M.S. in Data Science (GPA 3.95)</strong> at the University of Michigan–Dearborn, combining deep enterprise QA experience with hands-on expertise in machine learning, NLP, computer vision, and time-series forecasting. Currently a <strong>Research Assistant at STRIDE Lab</strong>, exploring self-supervised representation learning with JEPA architectures.</p>
-      <p class="intro-body">I bring a rare blend of rigorous data engineering, model development, and production-quality thinking shaped by over a decade of delivering large-scale systems across retail, healthcare, and media.</p>
-      <p class="chips-label">Core Skills</p>
+      <p class="intro-lead">"I spent 12 years making sure systems worked perfectly. Now I build the systems that learn."</p>
+      <p class="intro-body">My journey into data science didn't start with a bootcamp — it started with 12 years of obsessing over data quality, system behavior, and why things break at scale. As a Technical Lead at TCS, I was the person enterprises trusted to validate their most critical systems. That rigor never left me.</p>
+      <p class="intro-body">In 2023, I made a deliberate pivot. I pursued my <strong>M.S. in Data Science at the University of Michigan–Dearborn</strong>, graduating with a <strong>3.95 GPA</strong> — not to change who I am, but to add a powerful new dimension to it. Today I combine production-quality thinking with deep expertise in machine learning, NLP, computer vision, and time-series forecasting.</p>
+      <p class="intro-body">I'm currently a <strong>Research Assistant at STRIDE Lab</strong>, exploring self-supervised representation learning with JEPA architectures — frontier research that could reshape how AI models generalize. I'm actively seeking Data Scientist and ML Engineer roles where depth and discipline matter.</p>
+      <p class="chips-label">What I work with</p>
       <div class="chips">
-        <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">SQL</span><span class="chip">PySpark</span><span class="chip">Transformers</span><span class="chip">LLMs</span><span class="chip">Computer Vision</span><span class="chip">Tableau</span><span class="chip">AWS SageMaker</span><span class="chip">Streamlit</span>
+        <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">SQL</span><span class="chip">PySpark</span><span class="chip">R</span><span class="chip">Transformers</span><span class="chip">LLMs</span><span class="chip">HuggingFace</span><span class="chip">Computer Vision</span><span class="chip">OpenCV</span><span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Plotly</span><span class="chip">AWS SageMaker</span><span class="chip">Streamlit</span><span class="chip">Git</span>
       </div>
     </div>
   </section>
 
   <section class="section" id="experience">
-    <div class="section-label">Career</div>
-    <h2 class="section-title">Professional Experience</h2>
+    <div class="section-label">My Journey</div>
+    <h2 class="section-title">Where I've Been</h2>
     <div class="timeline">
       <div class="tl-item">
         <div class="tl-dot active"></div>
@@ -158,13 +155,13 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
               <div class="tl-org">STRIDE Lab, University of Michigan–Dearborn</div>
               <div class="tl-meta">Mar 2026 – Present &nbsp;·&nbsp; Michigan, USA</div>
             </div>
-            <span class="badge-current">Current</span>
+            <span class="badge-current">Now</span>
           </div>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:.75rem;">I'm currently working on one of the most exciting frontiers in AI — self-supervised learning. At STRIDE Lab, I research JEPA architectures (I-JEPA, V-JEPA, LLM-JEPA): models that learn rich representations without labeled data. It's foundational work that could reshape how we think about generalization in AI.</p>
           <ul class="tl-bullets">
-            <li>Reviewing literature on JEPA architectures (I-JEPA, V-JEPA, LLM-JEPA) for self-supervised representation learning.</li>
-            <li>Designing and evaluating experiments to assess JEPA models across domains, focusing on generalization and performance.</li>
+            <li>Designing and running experiments to evaluate JEPA models across multiple domains, focused on out-of-distribution generalization.</li>
             <li>Analyzing simulation outputs to identify causal relationships and support causal inference tasks.</li>
-            <li>Developing evaluation metrics and documenting research findings, presenting updates in weekly lab discussions.</li>
+            <li>Building evaluation frameworks and presenting findings in weekly lab discussions.</li>
           </ul>
         </div>
       </div>
@@ -178,13 +175,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
               <div class="tl-meta">Jan 2012 – Sep 2024 &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; <em>12+ years</em></div>
             </div>
           </div>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.8;margin-bottom:.75rem;">For over a decade, I was the person enterprises relied on to validate their most business-critical systems — across healthcare, retail, and media. I led a 10-person team, owned release quality end-to-end, and built the kind of analytical instincts that only come from years of debugging production data at scale.</p>
           <ul class="tl-bullets">
-            <li>Led end-to-end quality engineering and release validation across retail, healthcare, and media domains; mentored a 10-member team.</li>
-            <li>Reduced defect leakage by 25% by identifying requirement gaps and improving early-stage validation.</li>
-            <li>Executed complex SQL queries — joins, subqueries, aggregations — to validate backend data across workflows, APIs, and downstream systems.</li>
-            <li>Built automation frameworks using Selenium WebDriver and TestNG, improving regression coverage and reducing manual effort.</li>
-            <li>Led API testing and backend validation using Postman and Charles Proxy for system integration and data consistency.</li>
-            <li>Collaborated with cross-functional teams in Agile environments, reporting quality metrics, risks, and defect trends.</li>
+            <li>Reduced defect leakage by 25% through systematic requirement gap analysis and early-stage validation.</li>
+            <li>Wrote complex SQL across millions of records to validate backend data integrity across APIs and downstream systems.</li>
+            <li>Built Selenium + TestNG automation frameworks that significantly cut manual regression effort.</li>
+            <li>Worked directly with business, engineering, and analytics stakeholders across Agile delivery cycles.</li>
           </ul>
         </div>
       </div>
@@ -192,7 +188,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
   </section>
 
   <section class="section" id="projects">
-    <div class="section-label">Work</div>
+    <div class="section-label">Things I've Built</div>
     <h2 class="section-title">Projects</h2>
     <div class="proj-grid">
 
@@ -275,8 +271,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
   </section>
 
   <section class="section" id="certifications">
-    <div class="section-label">Learning</div>
+    <div class="section-label">Always Learning</div>
     <h2 class="section-title">Courses &amp; Certifications</h2>
+    <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;">Learning has always been a constant for me — from testing certifications early in my career to SQL for data science as I pivoted. Each credential represents a deliberate step forward.</p>
     <div class="cert-list">
       <div class="cert-card">
         <div class="cert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
@@ -298,8 +295,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
   </section>
 
   <section class="section" id="education">
-    <div class="section-label">Academic</div>
+    <div class="section-label">The Foundation</div>
     <h2 class="section-title">Education</h2>
+    <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;">My academic path reflects a continuous investment in growth — from a computer science foundation to a rigorous graduate program that transformed how I think about data and systems.</p>
     <div class="edu-list">
       <div class="edu-card">
         <div><div class="edu-deg">M.S. in Data Science</div><div class="edu-school">University of Michigan–Dearborn · Michigan, USA</div><div class="edu-date">Aug 2024 – Dec 2025</div></div>
@@ -312,6 +310,48 @@ body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text
       <div class="edu-card">
         <div><div class="edu-deg">B.Tech in Computer Science &amp; Engineering</div><div class="edu-school">Kalasalingam University · Tamil Nadu, India</div><div class="edu-date">2007 – 2011</div></div>
         <div class="edu-gpa">7.4 / 10</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="awards">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Awards</h2>
+    <p style="font-size:13.5px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.25rem;">Over 12 years, the work I cared most about was recognised by the teams around me — not just for delivery, but for the impact behind it.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.85rem;">
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem;">
+        <span style="font-size:20px;">🏆</span>
+        <div><div style="font-size:13.5px;font-weight:500;color:var(--text);">On-the-Spot Award</div><div style="font-size:12px;color:var(--text-muted);">TCS</div></div>
+      </div>
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem;">
+        <span style="font-size:20px;">⭐</span>
+        <div><div style="font-size:13.5px;font-weight:500;color:var(--text);">Star of the Quarter</div><div style="font-size:12px;color:var(--text-muted);">TCS</div></div>
+      </div>
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem;">
+        <span style="font-size:20px;">💡</span>
+        <div><div style="font-size:13.5px;font-weight:500;color:var(--text);">Special Initiative Award</div><div style="font-size:12px;color:var(--text-muted);">TCS</div></div>
+      </div>
+      <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem;">
+        <span style="font-size:20px;">🤝</span>
+        <div><div style="font-size:13.5px;font-weight:500;color:var(--text);">Best Team Award</div><div style="font-size:12px;color:var(--text-muted);">TCS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-label">Let's Talk</div>
+    <h2 class="section-title">Get in Touch</h2>
+    <div style="background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:10px;padding:1.75rem 2rem;">
+      <p style="font-size:14px;color:var(--text-secondary);line-height:1.85;margin-bottom:1.25rem;">I'm actively looking for Data Scientist and ML Engineer opportunities. If you're working on something interesting — whether it's healthcare AI, NLP, computer vision, or just a hard problem that needs someone who cares about getting it right — I'd love to hear from you.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+        <a href="mailto:iswaryasai.2147@gmail.com" style="display:inline-flex;align-items:center;gap:8px;background:var(--sidebar-bg);color:#e8ede9;padding:.65rem 1.3rem;border-radius:7px;text-decoration:none;font-size:13px;font-weight:500;transition:background .2s;" onmouseover="this.style.background='#0F6E56'" onmouseout="this.style.background='#161b18'">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email Me
+        </a>
+        <a href="https://www.linkedin.com/in/revathy-iswarya-sekaran-b53b2a226/" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--green-bg);color:var(--green-dark);padding:.65rem 1.3rem;border-radius:7px;text-decoration:none;font-size:13px;font-weight:500;border:1px solid #b2e0cf;transition:background .2s;" onmouseover="this.style.background='#c5edd9'" onmouseout="this.style.background='#E1F5EE'">
+          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          Connect on LinkedIn
+        </a>
       </div>
     </div>
   </section>
@@ -334,7 +374,7 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
 });
 
 // Highlight nav on scroll
-const sectionIds = ['introduction','experience','projects','resume','certifications','education'];
+const sectionIds = ['introduction','experience','projects','resume','certifications','education','awards','contact'];
 window.addEventListener('scroll', function() {
   let current = sectionIds[0];
   sectionIds.forEach(function(id) {
