@@ -1,1 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revathy Iswarya Sekaran — Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1D9E75;--green-light:#9FE1CB;--green-dark:#0F6E56;--green-bg:#E1F5EE;
+  --sidebar-bg:#161b18;--sidebar-muted:#6b7a6e;--sidebar-border:#252e28;
+  --body-bg:#f7f8f6;--card-bg:#ffffff;--text:#1c1f1d;--text-secondary:#4a5550;
+  --text-muted:#7a8580;--border:#e4e9e6;--sidebar-w:260px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--body-bg);color:var(--text);display:flex;min-height:100vh;font-size:15px;line-height:1.6}
+.sidebar{width:var(--sidebar-w);min-width:var(--sidebar-w);background:var(--sidebar-bg);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;padding:2rem 1.5rem;gap:1.4rem;}
+.sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-thumb{background:#2a332d}
+.avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-dark));display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:24px;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(29,158,117,0.2);}
+.sidebar-name{font-family:'DM Serif Display',serif;font-size:16px;color:#edf0ee;line-height:1.3;margin-top:.4rem;}
+.sidebar-role{font-size:11px;color:var(--sidebar-muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.6;margin-top:3px;}
+.s-divider{height:1px;background:var(--sidebar-border);margin:.1rem 0}
+.sidebar nav{display:flex;flex-direction:column;gap:1px}
+.nav-btn{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--sidebar-muted);text-align:left;padding:7px 0;cursor:pointer;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.nav-btn::before{content:'—';font-size:10px;color:#2e3d33;flex-shrink:0}
+.nav-btn:hover,.nav-btn.active{color:var(--green-light)}.nav-btn.active::before{color:var(--green)}
+.sidebar-meta{display:flex;flex-direction:column;gap:.55rem}
+.meta-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sidebar-muted)}.meta-row svg{flex-shrink:0;opacity:.7}
+.sidebar-socials{display:flex;flex-direction:column;gap:.4rem}
+.social-a{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sidebar-muted);text-decoration:none;transition:color .2s;}.social-a:hover{color:var(--green-light)}.social-a svg{flex-shrink:0}
+.main{flex:1;padding:3rem 3.5rem 5rem;max-width:880px}
+.section{margin-bottom:3.8rem}
+.section-label{font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--green);font-weight:500;margin-bottom:.6rem;}
+.section-title{font-family:'DM Serif Display',serif;font-size:28px;color:var(--text);margin-bottom:1.6rem;line-height:1.2;}
+.intro-card{background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:10px;padding:1.75rem 2rem;}
+.intro-lead{font-family:'DM Serif Display',serif;font-style:italic;font-size:16.5px;color:var(--green-dark);line-height:1.7;margin-bottom:1rem;}
+.intro-body{font-size:13.5px;color:var(--text-secondary);line-height:1.85;margin-bottom:.7rem}
+.chips-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-top:1.2rem;margin-bottom:.55rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#edf7f3;border:1px solid #b2e0cf;color:var(--green-dark);font-size:11.5px;padding:3px 11px;border-radius:20px;font-weight:500;}
+.timeline{position:relative;padding-left:1.8rem}
+.timeline::before{content:'';position:absolute;left:6px;top:16px;bottom:0;width:1.5px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:1.6rem}
+.tl-dot{position:absolute;left:-1.8rem;top:15px;width:14px;height:14px;border-radius:50%;background:var(--card-bg);border:2.5px solid var(--green);z-index:1;}
+.tl-dot.active{background:var(--green);box-shadow:0 0 0 4px rgba(29,158,117,.15)}
+.tl-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.5rem;}
+.tl-header{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.8rem}
+.tl-role{font-size:15px;font-weight:500;color:var(--text);margin-bottom:.2rem}
+.tl-org{font-size:13px;color:var(--green);margin-bottom:.15rem}
+.tl-meta{font-size:11.5px;color:var(--text-muted)}
+.badge-current{background:#edf7f3;border:1px solid #b2e0cf;color:var(--green-dark);font-size:10.5px;padding:2px 10px;border-radius:20px;font-weight:500;white-space:nowrap;flex-shrink:0;}
+.tl-bullets{list-style:none;padding:0;display:flex;flex-direction:column;gap:5px}
+.tl-bullets li{font-size:13px;color:var(--text-secondary);line-height:1.7;padding-left:14px;position:relative;}
+.tl-bullets li::before{content:'·';position:absolute;left:0;color:var(--green);font-size:20px;line-height:1.1;}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.proj-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.3rem;transition:border-color .2s,transform .18s,box-shadow .18s;display:flex;flex-direction:column;}
+.proj-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,158,117,.08);}
+.proj-title{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:.5rem;line-height:1.4}
+.proj-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:.75rem;flex:1}
+.proj-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.75rem}
+.proj-tag{background:#f3f5f4;color:#4a5550;font-size:10.5px;padding:2px 8px;border-radius:4px;font-family:'DM Mono',monospace;}
+.proj-link{font-size:12px;color:var(--green);font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:auto;}
+.proj-link:hover{color:var(--green-dark);text-decoration:underline}.proj-link svg{width:11px;height:11px}
+.resume-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:1.75rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;}
+.resume-title{font-family:'DM Serif Display',serif;font-size:19px;margin-bottom:.3rem}
+.resume-sub{font-size:13px;color:var(--text-muted);line-height:1.6}
+.btn-view{background:var(--sidebar-bg);color:#e8ede9;border:none;padding:.65rem 1.5rem;border-radius:7px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:inline-flex;align-items:center;gap:7px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.btn-view:hover{background:var(--green-dark)}.btn-view svg{width:15px;height:15px}
+.cert-list{display:flex;flex-direction:column;gap:.8rem}
+.cert-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;}
+.cert-icon{width:38px;height:38px;border-radius:8px;background:var(--green-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cert-icon svg{width:18px;height:18px;color:var(--green)}
+.cert-name{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:2px}.cert-org{font-size:12px;color:var(--text-muted)}
+.edu-list{display:flex;flex-direction:column;gap:.8rem}
+.edu-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.edu-deg{font-size:13.5px;font-weight:500;color:var(--text);margin-bottom:2px}.edu-school{font-size:12.5px;color:var(--text-muted)}.edu-date{font-size:11.5px;color:#aab5af;margin-top:2px}
+.edu-gpa{font-size:14px;font-weight:500;color:var(--green);white-space:nowrap;flex-shrink:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.section{animation:fadeUp .5s ease both}
+.section:nth-child(1){animation-delay:.05s}.section:nth-child(2){animation-delay:.12s}.section:nth-child(3){animation-delay:.19s}.section:nth-child(4){animation-delay:.26s}.section:nth-child(5){animation-delay:.33s}.section:nth-child(6){animation-delay:.40s}
+@media(max-width:800px){.main{padding:2rem 1.5rem 4rem}.proj-grid{grid-template-columns:1fr}.resume-card{flex-direction:column;align-items:flex-start}}
+@media(max-width:640px){.sidebar{display:none}body{display:block}}
+</style>
+</head>
+<body>
 
+<aside class="sidebar">
+  <div>
+    <div class="avatar">RI</div>
+    <div class="sidebar-name">Revathy Iswarya Sekaran</div>
+    <div class="sidebar-role">Data Scientist · ML Engineer<br>Data Analyst</div>
+  </div>
+  <div class="s-divider"></div>
+  <nav>
+    <button class="nav-btn active" data-target="introduction">Introduction</button>
+    <button class="nav-btn" data-target="experience">Experience</button>
+    <button class="nav-btn" data-target="projects">Projects</button>
+    <button class="nav-btn" data-target="resume">Resume</button>
+    <button class="nav-btn" data-target="certifications">Courses &amp; Certs</button>
+    <button class="nav-btn" data-target="education">Education</button>
+  </nav>
+  <div class="s-divider"></div>
+  <div class="sidebar-meta">
+    <div class="meta-row">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Michigan, USA
+    </div>
+    <div class="meta-row">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>iswaryasai.2147@gmail.com
+    </div>
+    <div class="meta-row">
+      <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.29 12a19.79 19.79 0 01-3.07-8.67A2 2 0 013.2 1.27h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L7.91 9a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>+1 (313) 445-8016
+    </div>
+  </div>
+  <div class="s-divider"></div>
+  <div class="sidebar-socials">
+    <a class="social-a" href="https://www.linkedin.com/in/revathy-iswarya-sekaran-b53b2a226/" target="_blank">
+      <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn
+    </a>
+    <a class="social-a" href="https://github.com/Ishugit21/" target="_blank">
+      <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>GitHub
+    </a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <section class="section" id="introduction">
+    <div class="section-label">About Me</div>
+    <h1 class="section-title">Hello, I'm Revathy</h1>
+    <div class="intro-card">
+      <p class="intro-lead">Data Scientist with 12+ years in QA &amp; analytics, now building ML systems that make sense of the world.</p>
+      <p class="intro-body">I recently completed my <strong>M.S. in Data Science (GPA 3.95)</strong> at the University of Michigan–Dearborn, combining deep enterprise QA experience with hands-on expertise in machine learning, NLP, computer vision, and time-series forecasting. Currently a <strong>Research Assistant at STRIDE Lab</strong>, exploring self-supervised representation learning with JEPA architectures.</p>
+      <p class="intro-body">I bring a rare blend of rigorous data engineering, model development, and production-quality thinking shaped by over a decade of delivering large-scale systems across retail, healthcare, and media.</p>
+      <p class="chips-label">Core Skills</p>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">Scikit-learn</span><span class="chip">SQL</span><span class="chip">PySpark</span><span class="chip">Transformers</span><span class="chip">LLMs</span><span class="chip">Computer Vision</span><span class="chip">Tableau</span><span class="chip">AWS SageMaker</span><span class="chip">Streamlit</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-label">Career</div>
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Research Assistant</div>
+              <div class="tl-org">STRIDE Lab, University of Michigan–Dearborn</div>
+              <div class="tl-meta">Mar 2026 – Present &nbsp;·&nbsp; Michigan, USA</div>
+            </div>
+            <span class="badge-current">Current</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Reviewing literature on JEPA architectures (I-JEPA, V-JEPA, LLM-JEPA) for self-supervised representation learning.</li>
+            <li>Designing and evaluating experiments to assess JEPA models across domains, focusing on generalization and performance.</li>
+            <li>Analyzing simulation outputs to identify causal relationships and support causal inference tasks.</li>
+            <li>Developing evaluation metrics and documenting research findings, presenting updates in weekly lab discussions.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-header">
+            <div>
+              <div class="tl-role">Assistant Consultant — Technical Lead</div>
+              <div class="tl-org">Tata Consultancy Services (TCS)</div>
+              <div class="tl-meta">Jan 2012 – Sep 2024 &nbsp;·&nbsp; Chennai, India &nbsp;·&nbsp; <em>12+ years</em></div>
+            </div>
+          </div>
+          <ul class="tl-bullets">
+            <li>Led end-to-end quality engineering and release validation across retail, healthcare, and media domains; mentored a 10-member team.</li>
+            <li>Reduced defect leakage by 25% by identifying requirement gaps and improving early-stage validation.</li>
+            <li>Executed complex SQL queries — joins, subqueries, aggregations — to validate backend data across workflows, APIs, and downstream systems.</li>
+            <li>Built automation frameworks using Selenium WebDriver and TestNG, improving regression coverage and reducing manual effort.</li>
+            <li>Led API testing and backend validation using Postman and Charles Proxy for system integration and data consistency.</li>
+            <li>Collaborated with cross-functional teams in Agile environments, reporting quality metrics, risks, and defect trends.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-title">Parkinson's Disease Forecasting</div>
+        <p class="proj-desc">Engineered acoustic features from 5,800+ voice samples. Trained ElasticNet, SVM, Random Forest, ANN &amp; LSTM models. Best LSTM achieved <strong>MSE = 0.002</strong> and <strong>R² = 0.96</strong>. Deployed a Streamlit app with LIME-based explainability.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">LSTM</span><span class="proj-tag">Streamlit</span><span class="proj-tag">LIME</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21/Parkinsons-Disease-Prediction" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Student Engagement via Facial Expression Recognition</div>
+        <p class="proj-desc">Processed 9,000+ video snippets; extracted facial expression and embedding features using FER and FaceNet. CNN &amp; ShuffleNet with data augmentation achieved <strong>86% training accuracy</strong>.</p>
+        <div class="proj-tags"><span class="proj-tag">PyTorch</span><span class="proj-tag">CNN</span><span class="proj-tag">FaceNet</span><span class="proj-tag">OpenCV</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21/Student-Engagement-Prediction" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Mental Health Topic Modeling &amp; Sentiment Analysis</div>
+        <p class="proj-desc">Fine-tuned DistilBERT (class-weighted loss) and MiniLM (SMOTE) on therapist Q&amp;A and social media text. Achieved <strong>ROC AUC up to 0.99</strong> for Anxiety, Normal, and Personality Disorder classification.</p>
+        <div class="proj-tags"><span class="proj-tag">BERT</span><span class="proj-tag">DistilBERT</span><span class="proj-tag">LDA</span><span class="proj-tag">HuggingFace</span><span class="proj-tag">SMOTE</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21/Sentiment-Analysis" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Spatio-Temporal Traffic Flow Prediction</div>
+        <p class="proj-desc">End-to-end pipeline using YOLOv5, Mask R-CNN, and DeepSORT for vehicle detection and tracking. TCGCN for forecasting — <strong>MAE = 6.53</strong> (clear) vs <strong>9.12</strong> (rain).</p>
+        <div class="proj-tags"><span class="proj-tag">YOLOv5</span><span class="proj-tag">TCGCN</span><span class="proj-tag">DeepSORT</span><span class="proj-tag">PyTorch</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21/Traffic-flow-prediction" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Active Feature Elicitation for Clinical &amp; Medical Image Classification</div>
+        <p class="proj-desc">Unified AFE framework applied to PIMA Diabetes, Breast Cancer, and COVID-19 X-ray datasets. Iteratively acquires the most informative missing features to maximize model accuracy while minimizing data collection cost. Evaluated using ROC AUC, F1, precision, and recall.</p>
+        <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">TensorFlow</span><span class="proj-tag">Keras</span><span class="proj-tag">CNN</span><span class="proj-tag">scikit-learn</span><span class="proj-tag">eli5</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title">Multimodal Object &amp; Anomaly Detection for Autonomous Driving</div>
+        <p class="proj-desc">Real-time detection system using YOLOv5 for object detection and YOLOv8 for anomaly flagging on 56,000+ Waymo Perception images. Identifies vehicles, pedestrians, and out-of-distribution road elements using confidence thresholding and IoU evaluation.</p>
+        <div class="proj-tags"><span class="proj-tag">YOLOv5</span><span class="proj-tag">YOLOv8</span><span class="proj-tag">Waymo</span><span class="proj-tag">PyTorch</span><span class="proj-tag">OpenCV</span></div>
+        <a class="proj-link" href="https://github.com/Ishugit21" target="_blank">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          View on GitHub ↗
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="resume">
+    <div class="section-label">Document</div>
+    <h2 class="section-title">Resume</h2>
+    <div class="resume-card">
+      <div>
+        <div class="resume-title">Revathy Iswarya Sekaran</div>
+        <div class="resume-sub">Data Scientist &nbsp;·&nbsp; ML Engineer &nbsp;·&nbsp; Data Analyst<br>M.S. Data Science, University of Michigan–Dearborn &nbsp;|&nbsp; GPA: 3.95 / 4.0</div>
+      </div>
+      <a class="btn-view" href="Revathy_Iswarya_Resume.pdf" target="_blank">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        View Resume
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="certifications">
+    <div class="section-label">Learning</div>
+    <h2 class="section-title">Courses &amp; Certifications</h2>
+    <div class="cert-list">
+      <div class="cert-card">
+        <div class="cert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><div class="cert-name">Scrum Master</div><div class="cert-org">Certified Scrum Master (CSM)</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><div class="cert-name">ISTQB Foundation Level</div><div class="cert-org">International Software Testing Qualifications Board</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div><div class="cert-name">ISTQB Advanced Test Analyst</div><div class="cert-org">International Software Testing Qualifications Board</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+        <div><div class="cert-name">Databases and SQL for Data Science with Python</div><div class="cert-org">IBM · Coursera</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="section-label">Academic</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div><div class="edu-deg">M.S. in Data Science</div><div class="edu-school">University of Michigan–Dearborn · Michigan, USA</div><div class="edu-date">Aug 2024 – Dec 2025</div></div>
+        <div class="edu-gpa">3.95 / 4.0</div>
+      </div>
+      <div class="edu-card">
+        <div><div class="edu-deg">Post Graduate Program in Data Science</div><div class="edu-school">VIT Bangalore · Bengaluru, India</div><div class="edu-date">2023 – 2024</div></div>
+        <div class="edu-gpa">4.0 / 4.0</div>
+      </div>
+      <div class="edu-card">
+        <div><div class="edu-deg">B.Tech in Computer Science &amp; Engineering</div><div class="edu-school">Kalasalingam University · Tamil Nadu, India</div><div class="edu-date">2007 – 2011</div></div>
+        <div class="edu-gpa">7.4 / 10</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Smooth scroll — using data-target, no inline onclick conflict
+document.querySelectorAll('.nav-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const id = this.getAttribute('data-target');
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 40;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// Highlight nav on scroll
+const sectionIds = ['introduction','experience','projects','resume','certifications','education'];
+window.addEventListener('scroll', function() {
+  let current = sectionIds[0];
+  sectionIds.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= 160) current = id;
+  });
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.toggle('active', b.getAttribute('data-target') === current);
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
